@@ -13,9 +13,16 @@ app = Flask( __name__ )
 
 @app.route( '/download', methods=['POST'] )
 def pandoraDownloader():
+    songTitle = request.form['title']
+    songArtist = request.form['artist']
+    songAlbum = request.form['album']
 
-    song_path = make_song_path( request.form['title'], request.form['artist'] )
-    song_dir  = make_song_path( request.form['title'], request.form['artist'], False )
+    print ("Song title: " + songTitle)
+    print ("Song artist: " + songArtist)
+    print ("Song album: " + songAlbum)
+
+    song_path = make_song_path( songTitle, songArtist )
+    song_dir  = make_song_path( songTitle, songArtist, False )
 
     # check to see if the file has been downloaded before!
     if os.path.exists( song_path ):

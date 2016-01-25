@@ -11,7 +11,7 @@ $( function() {
         // Send the download request/song information to the background manager
         chrome.runtime.sendMessage({
             title:  $('.songTitle').text(),
-            artist: $('.artistSummary').text(),
+            artist: $('div.artistSummary').text(),
             album:  $('.albumTitle').text()
         }, function( response ) {} );
     }, 5000);
