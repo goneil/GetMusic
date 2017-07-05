@@ -8,7 +8,7 @@ $( function() {
     chrome.webRequest.onBeforeRequest.addListener( function( details ) {
 
         // Test the url against a regex of the different locations the songs live!
-        if ( details.url.match( /(http.*\.pandora.com\/access\/.*)/i ) ) {
+        if ( urlMatch( details.url ) ) {
 
             // Save the url for later
             currentSongUrl = details.url
@@ -73,5 +73,12 @@ $( function() {
         .fail(function(){
             send_info( 'The web server isn\'t running!' );
         });
+    }
+
+    function urlMatch( url ) {
+        if ( url.match( /(http.*\.com\/access\/.*)/i ) )
+          return true;
+
+        return false;
     }
 })
