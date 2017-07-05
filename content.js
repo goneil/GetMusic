@@ -1,35 +1,23 @@
 $( function() {
-    // Append the download button next to your username
-    $('#brandingBar .rightcolumn').before('<div class="pandora-downloader"><button>Download</button></div>');
-
-    // The info box!
-    $('body').append('<div class="pandora-downloader-infobox"></div>')
-
-    // Add functionality to the download button.
     setInterval(function() {
 
         // Send the download request/song information to the background manager
         chrome.runtime.sendMessage({
-            title:  $('.songTitle').text(),
-            artist: $('div.artistSummary').text(),
-            album:  $('.albumTitle').text()
+            title:  getTitle(),
+            artist: getArtist(),
+            album:  getAlbum()
         }, function( response ) {} );
     }, 5000);
 
-    chrome.runtime.onMessage.addListener( function( request, sender, sendResponse ) {
-
-        display_info( request );
-
-    });
-
-    function display_info( message ) {
-        $('.pandora-downloader-infobox')
-            .finish()
-            .fadeOut( 10 )
-            .text( message )
-            .fadeIn( 400 )
-            .delay( 3000 )
-            .fadeOut( 400 );
+    function getTitle() {
+      return document.getElementsByClassName('nowPlayingTopInfo__current__trackName')[0].text;
     }
 
+    function getArtist() {
+      return document.getElementsByClassName('nowPlayingTopInfo__current__artistName')[0].text;
+    }
+
+    function getAlbum() {
+      return document.getElementsByClassName('nowPlayingTopInfo__current__albumName')[0].text;
+    }
 })

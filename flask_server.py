@@ -19,7 +19,7 @@ def pandoraDownloader( ):
 
     print ( "---------------------------------" )
     print ( "Received Download Request for ..." )
-    print ( songTitle)
+    print ( songTitle )
     print ( songArtist )
     print ( songAlbum )
 

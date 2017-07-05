@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
 
-    "name": "Pandora Downloader",
-    "description": "Adds a song downloader button to your pandora station!",
+    "name": "Pandora Auto Downloader",
+    "description": "Sends request to local server with URL used for downloading song",
     "version": "1.2",
 
     "permissions": [
