@@ -76,9 +76,7 @@ $( function() {
     }
 
     function urlMatch( url ) {
-        if ( url.match( /(http.*\.com\/access\/.*)/i ) )
-          return true;
-
-        return false;
+        // TODO make match smarter
+        return  url.match( /(http.*\.com\/access\/.*)/i )
     }
 })
